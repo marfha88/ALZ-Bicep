@@ -6,7 +6,7 @@
       "value": "alz-log-analytics"
     },
     "parLogAnalyticsWorkspaceLocation": {
-      "value": "eastus"
+      "value": "westeurope"
     },
     "parLogAnalyticsWorkspaceSkuName": {
       "value": "PerGB2018"
@@ -19,32 +19,9 @@
     },
     "parLogAnalyticsWorkspaceSolutions": {
       "value": [
-        "AgentHealthAssessment",
-        "AntiMalware",
-        "ChangeTracking",
         "Security",
-        "SecurityInsights",
-        "SQLAdvancedThreatProtection",
-        "SQLVulnerabilityAssessment",
-        "SQLAssessment",
-        "Updates",
-        "VMInsights"
+        "SecurityInsights"
       ]
-    },
-    "parLogAnalyticsWorkspaceLinkAutomationAccount": {
-      "value": true
-    },
-    "parAutomationAccountName": {
-      "value": "alz-automation-account"
-    },
-    "parAutomationAccountLocation": {
-      "value": "eastus2"
-    },
-    "parAutomationAccountUseManagedIdentity": {
-      "value": true
-    },
-    "parAutomationAccountPublicNetworkAccess": {
-      "value": true
     },
     "parTags": {
       "value": {
@@ -54,19 +31,10 @@
     "parUseSentinelClassicPricingTiers": {
       "value": false
     },
-    "parLogAnalyticsLinkedServiceAutomationAccountName": {
-      "value": "Automation"
-    },
     "parTelemetryOptOut": {
       "value": false
     },
     "parGlobalResourceLock": {
-      "value": {
-        "kind": "None",
-        "notes": "This lock was created by the ALZ Bicep Logging Module."
-      }
-    },
-    "parAutomationAccountLock": {
       "value": {
         "kind": "None",
         "notes": "This lock was created by the ALZ Bicep Logging Module."

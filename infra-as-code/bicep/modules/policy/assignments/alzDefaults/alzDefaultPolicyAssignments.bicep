@@ -81,9 +81,6 @@ param parLogAnalyticsWorkspaceResourceId string = ''
 @sys.description('Number of days of log retention for Log Analytics Workspace.')
 param parLogAnalyticsWorkspaceLogRetentionInDays string = '365'
 
-@sys.description('Automation account name.')
-param parAutomationAccountName string = 'alz-automation-account'
-
 @sys.description('An e-mail address that you want Microsoft Defender for Cloud alerts to be sent to.')
 param parMsDefenderForCloudEmailSecurityContact string = 'security_contact@replace_me.com'
 
@@ -990,9 +987,6 @@ module modPolicyAssignmentMgmtDeployLogAnalytics '../../../policy/assignments/po
       }
       dataRetention: {
         value: parLogAnalyticsWorkspaceLogRetentionInDays
-      }
-      automationAccountName: {
-        value: parAutomationAccountName
       }
       automationRegion: {
         value: parLogAnalyticsWorkSpaceAndAutomationAccountLocation

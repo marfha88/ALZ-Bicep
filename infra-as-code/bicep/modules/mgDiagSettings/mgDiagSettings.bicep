@@ -1,3 +1,4 @@
+
 targetScope = 'managementGroup'
 
 metadata name = 'ALZ Bicep - Management Group Diagnostic Settings'
@@ -9,11 +10,12 @@ param parLogAnalyticsWorkspaceResourceId string
 @sys.description('Diagnostic Settings Name.')
 param parDiagnosticSettingsName string = 'toLa'
 
-@sys.description('Set Parameter to true to Opt-out of deployment telemetry')
-param parTelemetryOptOut bool = false
+
+//@sys.description('Set Parameter to true to Opt-out of deployment telemetry')
+//param parTelemetryOptOut bool = false
 
 // Customer Usage Attribution Id
-var varCuaid = '5d17f1c2-f17b-4426-9712-0cd2652c4435'
+//var varCuaid = '5d17f1c2-f17b-4426-9712-0cd2652c4435'
 
 resource mgDiagSet 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
   name: parDiagnosticSettingsName
@@ -32,9 +34,11 @@ resource mgDiagSet 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = 
   }
 }
 
+/*
 // Optional Deployment for Customer Usage Attribution
 module modCustomerUsageAttribution '../../CRML/customerUsageAttribution/cuaIdManagementGroup.bicep' = if (!parTelemetryOptOut) {
   #disable-next-line no-loc-expr-outside-params //Only to ensure telemetry data is stored in same location as deployment. See https://github.com/Azure/ALZ-Bicep/wiki/FAQ#why-are-some-linter-rules-disabled-via-the-disable-next-line-bicep-function for more information
   name: 'pid-${varCuaid}-${uniqueString(deployment().location)}'
   params: {}
 }
+*/

@@ -1,0 +1,3 @@
+az deployment mg what-if --name "policy" --location eastus --management-group-id BRREG --template-file .\customRoleDefinitions.bicep --parameters .\parameters\customRoleDefinitions.parameters.all.json
+
+az deployment mg create --name "policy" --location eastus --management-group-id BRREG --template-file .\customRoleDefinitions.bicep --parameters .\parameters\customRoleDefinitions.parameters.all.json --what-if

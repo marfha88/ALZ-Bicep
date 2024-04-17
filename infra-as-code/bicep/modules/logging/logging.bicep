@@ -72,30 +72,17 @@ param parLogAnalyticsWorkspaceLock lockType = {
 }
 
 @allowed([
-  'AgentHealthAssessment'
-  'AntiMalware'
-  'ChangeTracking'
+
   'Security'
   'SecurityInsights'
-  'ServiceMap'
-  'SQLAdvancedThreatProtection'
-  'SQLVulnerabilityAssessment'
-  'SQLAssessment'
-  'Updates'
-  'VMInsights'
+
+
 ])
 @sys.description('Solutions that will be added to the Log Analytics Workspace.')
 param parLogAnalyticsWorkspaceSolutions array = [
-  'AgentHealthAssessment'
-  'AntiMalware'
-  'ChangeTracking'
+
   'Security'
   'SecurityInsights'
-  'SQLAdvancedThreatProtection'
-  'SQLVulnerabilityAssessment'
-  'SQLAssessment'
-  'Updates'
-  'VMInsights'
 ]
 
 @sys.description('''Resource Lock Configuration for Log Analytics Workspace Solutions.
@@ -109,9 +96,10 @@ param parLogAnalyticsWorkspaceSolutionsLock lockType = {
   notes: 'This lock was created by the ALZ Bicep Logging Module.'
 }
 
-@sys.description('Log Analytics Workspace should be linked with the automation account.')
-param parLogAnalyticsWorkspaceLinkAutomationAccount bool = true
+//@sys.description('Log Analytics Workspace should be linked with the automation account.')
+//param parLogAnalyticsWorkspaceLinkAutomationAccount bool = true
 
+/*
 @sys.description('Automation account name.')
 param parAutomationAccountName string = 'alz-automation-account'
 
@@ -123,7 +111,9 @@ param parAutomationAccountUseManagedIdentity bool = true
 
 @sys.description('Automation Account - Public network access.')
 param parAutomationAccountPublicNetworkAccess bool = true
+*/
 
+/*
 @sys.description('''Resource Lock Configuration for Automation Account.
 
 - `kind` - The lock settings of the service which can be CanNotDelete, ReadOnly, or None.
@@ -134,28 +124,28 @@ param parAutomationAccountLock lockType = {
   kind: 'None'
   notes: 'This lock was created by the ALZ Bicep Logging Module.'
 }
-
+*/
 @sys.description('Tags you would like to be applied to all resources in this module.')
 param parTags object = {}
-
+/*
 @sys.description('Tags you would like to be applied to Automation Account.')
 param parAutomationAccountTags object = parTags
-
+*/
 @sys.description('Tags you would like to be applied to Log Analytics Workspace.')
 param parLogAnalyticsWorkspaceTags object = parTags
 
 @sys.description('Set Parameter to true to use Sentinel Classic Pricing Tiers, following changes introduced in July 2023 as documented here: https://learn.microsoft.com/azure/sentinel/enroll-simplified-pricing-tier.')
 param parUseSentinelClassicPricingTiers bool = false
 
-@sys.description('Log Analytics LinkedService name for Automation Account.')
-param parLogAnalyticsLinkedServiceAutomationAccountName string = 'Automation'
+//@sys.description('Log Analytics LinkedService name for Automation Account.')
+//param parLogAnalyticsLinkedServiceAutomationAccountName string = 'Automation'
 
 @sys.description('Set Parameter to true to Opt-out of deployment telemetry')
 param parTelemetryOptOut bool = false
 
 // Customer Usage Attribution Id
 var varCuaid = 'f8087c67-cc41-46b2-994d-66e4b661860d'
-
+/*
 resource resAutomationAccount 'Microsoft.Automation/automationAccounts@2022-08-08' = {
   name: parAutomationAccountName
   location: parAutomationAccountLocation
@@ -173,7 +163,9 @@ resource resAutomationAccount 'Microsoft.Automation/automationAccounts@2022-08-0
     }
   }
 }
+*/
 
+/*
 // Create a resource lock for the automation account if parGlobalResourceLock.kind != 'None' or if parAutomationAccountLock.kind != 'None'
 resource resAutomationAccountLock 'Microsoft.Authorization/locks@2020-05-01' = if (parAutomationAccountLock.kind != 'None' || parGlobalResourceLock.kind != 'None') {
   scope: resAutomationAccount
@@ -183,6 +175,7 @@ resource resAutomationAccountLock 'Microsoft.Authorization/locks@2020-05-01' = i
     notes: (parGlobalResourceLock.kind != 'None') ? parGlobalResourceLock.?notes : parAutomationAccountLock.?notes
   }
 }
+*/
 
 resource resLogAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
   name: parLogAnalyticsWorkspaceName
@@ -237,6 +230,7 @@ resource resLogAnalyticsWorkspaceSolutionsLock 'Microsoft.Authorization/locks@20
   }
 }]
 
+/*
 resource resLogAnalyticsLinkedServiceForAutomationAccount 'Microsoft.OperationalInsights/workspaces/linkedServices@2020-08-01' = if (parLogAnalyticsWorkspaceLinkAutomationAccount) {
   parent: resLogAnalyticsWorkspace
   name: parLogAnalyticsLinkedServiceAutomationAccountName
@@ -244,7 +238,7 @@ resource resLogAnalyticsLinkedServiceForAutomationAccount 'Microsoft.Operational
     resourceId: resAutomationAccount.id
   }
 }
-
+*/
 // Optional Deployment for Customer Usage Attribution
 module modCustomerUsageAttribution '../../CRML/customerUsageAttribution/cuaIdResourceGroup.bicep' = if (!parTelemetryOptOut) {
   #disable-next-line no-loc-expr-outside-params //Only to ensure telemetry data is stored in same location as deployment. See https://github.com/Azure/ALZ-Bicep/wiki/FAQ#why-are-some-linter-rules-disabled-via-the-disable-next-line-bicep-function for more information
@@ -257,5 +251,7 @@ output outLogAnalyticsWorkspaceId string = resLogAnalyticsWorkspace.id
 output outLogAnalyticsCustomerId string = resLogAnalyticsWorkspace.properties.customerId
 output outLogAnalyticsSolutions array = parLogAnalyticsWorkspaceSolutions
 
+/*
 output outAutomationAccountName string = resAutomationAccount.name
 output outAutomationAccountId string = resAutomationAccount.id
+*/

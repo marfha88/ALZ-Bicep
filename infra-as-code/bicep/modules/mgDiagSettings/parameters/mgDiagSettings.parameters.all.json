@@ -3,13 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "parLogAnalyticsWorkspaceResourceId": {
-      "value": ""
-    },
-    "parDiagnosticSettingsName": {
-      "value": "toLa"
-    },
-    "parTelemetryOptOut": {
-      "value": false
+      "value": "/subscriptions/1e5cbc27-c885-4f6c-b0a5-d208a6577309/resourcegroups/rg-brreg-logging-001/providers/microsoft.operationalinsights/workspaces/alz-log-analytics"
     }
   }
 }

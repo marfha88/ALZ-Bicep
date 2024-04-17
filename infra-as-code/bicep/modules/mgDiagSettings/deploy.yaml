@@ -1,0 +1,2 @@
+
+az deployment mg create --name diagnosticV2 --location eastus --management-group-id BRREG --template-file .\mgDiagSettings.bicep  --parameters .\parameters\mgDiagSettings.parameters.all.json --what-if
