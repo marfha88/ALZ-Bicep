@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "parTopLevelManagementGroupPrefix": {
-      "value": "brg"
+      "value": "rlab"
     },
     "parTopLevelManagementGroupSuffix": {
-      "value": "Brønnøysundregistrene"
+      "value": "Registrenelab"
     },
     "parTopLevelManagementGroupDisplayName": {
       "value": "Azure Landing Zones"
