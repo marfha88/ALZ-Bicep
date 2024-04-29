@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "parTopLevelManagementGroupPrefix": {
-      "value": "BRREG"
+      "value": "rlab"
     },
     "parTopLevelManagementGroupSuffix": {
       "value": ""
     },
     "parTopLevelManagementGroupDisplayName": {
-      "value": "Bronnoysundregistrene"
+      "value": "Registrenelab"
     },
     "parTopLevelManagementGroupParentId": {
       "value": ""
